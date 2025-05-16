@@ -5,7 +5,8 @@ const API_URL = 'https://legendary-lamp-jj9x6x6rgw45cqp6q-8000.app.github.dev/ap
 function Users() {
   const [users, setUsers] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [form, setForm] = useState({ name: '', email: '' });
+  const [form, setForm] = useState({ name: '', email: '', password: '' });
+  const [userError, setUserError] = useState('');
 
   useEffect(() => {
     fetch(API_URL)
@@ -18,18 +19,26 @@ function Users() {
   const handleInputChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
   const handleAddUser = (e) => {
     e.preventDefault();
-    // Example POST, update as needed for your backend
+    setUserError('');
     fetch(API_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form)
     })
-      .then(res => res.json())
-      .then(data => {
-        setUsers([...users, data]);
-        setForm({ name: '', email: '' });
-        handleCloseModal();
-      });
+      .then(async res => {
+        const data = await res.json();
+        // Map _id to id if needed
+        const userData = data._id ? { ...data, id: data._id } : data;
+        if (!res.ok || !userData.id) {
+          setUserError(userData?.email?.[0] || userData?.detail || 'Failed to add user.');
+        } else {
+          setUsers([...users, userData]);
+          setForm({ name: '', email: '', password: '' });
+          setUserError('');
+          handleCloseModal();
+        }
+      })
+      .catch(() => setUserError('Network error.'));
   };
 
   return (
@@ -68,6 +77,7 @@ function Users() {
                 </div>
                 <form onSubmit={handleAddUser}>
                   <div className="modal-body">
+                    {userError && <div className="alert alert-danger">{userError}</div>}
                     <div className="mb-3">
                       <label htmlFor="userName" className="form-label">Name</label>
                       <input type="text" className="form-control" id="userName" name="name" value={form.name} onChange={handleInputChange} required />
@@ -75,6 +85,10 @@ function Users() {
                     <div className="mb-3">
                       <label htmlFor="userEmail" className="form-label">Email</label>
                       <input type="email" className="form-control" id="userEmail" name="email" value={form.email} onChange={handleInputChange} required />
+                    </div>
+                    <div className="mb-3">
+                      <label htmlFor="userPassword" className="form-label">Password</label>
+                      <input type="password" className="form-control" id="userPassword" name="password" value={form.password || ''} onChange={handleInputChange} required placeholder="Enter password" autoComplete="new-password" />
                     </div>
                   </div>
                   <div className="modal-footer">
