@@ -12,13 +12,30 @@ function Activities() {
   }, []);
 
   return (
-    <div>
-      <h2>Activities</h2>
-      <ul>
-        {activities.map((activity, idx) => (
-          <li key={idx}>{activity.type} - {activity.duration} min on {activity.date}</li>
-        ))}
-      </ul>
+    <div className="card shadow-sm mb-4">
+      <div className="card-body">
+        <h2 className="card-title mb-4">Activities</h2>
+        <div className="table-responsive">
+          <table className="table table-striped table-hover align-middle">
+            <thead className="table-primary">
+              <tr>
+                <th scope="col">Type</th>
+                <th scope="col">Duration (min)</th>
+                <th scope="col">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {activities.map((activity, idx) => (
+                <tr key={idx}>
+                  <td>{activity.type}</td>
+                  <td>{activity.duration}</td>
+                  <td>{activity.date}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }
