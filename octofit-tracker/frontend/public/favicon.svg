@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="32" cy="32" r="32" fill="#3a86ff"/>
+  <ellipse cx="32" cy="32" rx="22" ry="22" fill="#fff0f6"/>
+  <ellipse cx="32" cy="32" rx="14" ry="14" fill="#8338ec"/>
+  <ellipse cx="32" cy="32" rx="7" ry="7" fill="#ffbe0b"/>
+  <text x="32" y="38" text-anchor="middle" font-size="18" font-family="Segoe UI, Arial, sans-serif" fill="#3a86ff" font-weight="bold">O</text>
+</svg>

@@ -36,3 +36,92 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background: linear-gradient(135deg, #e0f7fa 0%, #f8bbd0 100%);
+  min-height: 100vh;
+  color: #22223b;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.navbar {
+  background: linear-gradient(90deg, #3a86ff 0%, #8338ec 100%) !important;
+  box-shadow: 0 2px 8px rgba(58, 134, 255, 0.1);
+}
+
+.navbar-brand, .navbar-nav .nav-link {
+  color: #fff !important;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.navbar-brand img {
+  height: 40px;
+  margin-right: 12px;
+  vertical-align: middle;
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .nav-link:hover {
+  color: #ffbe0b !important;
+}
+
+.card {
+  background: #fff0f6;
+  border: 1px solid #f8bbd0;
+  border-radius: 12px;
+}
+
+.card-title, h1, h2, h3, h4, h5 {
+  color: #3a86ff;
+  font-weight: 700;
+}
+
+.table {
+  background: #f1f8e9;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table-primary {
+  background: #3a86ff !important;
+  color: #fff;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #e0f7fa;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #3a86ff 0%, #8338ec 100%);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(58, 134, 255, 0.1);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, #8338ec 0%, #3a86ff 100%);
+  color: #ffbe0b;
+}
+
+a, .App-link {
+  color: #8338ec;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #ff006e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3a86ff;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8bbd0;
+}
+
+.favicon {
+  border-radius: 50%;
+}
